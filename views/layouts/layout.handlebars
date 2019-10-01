@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- keyboard widget css & script (required) -->
+	<link href="../css/keyboard.css" rel="stylesheet">
+    <title>{{{title}}}</title>
+    <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+    <!-- Bulma Version 0.7.5-->
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
+    <script type="text/javascript" src="../js/vkboards.js"></script>
+    <style type="text/css">
+    @font-face {
+            font-family: Sharada;
+            src: url('../fonts/Sharada.woff');
+        }
+     textarea {
+            font-family: Sharada;
+            border: 1px solid black;
+            font-size: 3em;
+            }
+    </style>
+</head>
+<body>
+    <section class="hero is-fullheight is-default is-bold">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="../">
+                            Write Sharada
+                        </a>
+                        <span class="navbar-burger burger" data-target="navbarMenu" target="navbarMenu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenu" class="navbar-menu">
+                        <div class="navbar-end">
+                            <div class="tabs is-right">
+                                <ul>
+                                    <li><a href="../files/Sharada.ttf" target="_blank">Download Sharada Font for PC</a></li>
+                                    <li><a href="/report" target="_blank">Feedback/Report an Issue</a></li>
+                                    <li><a href="/contact" target="_blank">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <section class="hero is-fullheight is-bold has-background-dark">
+      {{{body}}}
+    </section>
+
+        <div class="hero-foot">
+            <div class="container">
+                <div class="tabs is-centered">
+                    <ul>
+                        <li>This Platform is developed by  <b>Shuhul Kaul</b></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../js/bulma.js"></script>
+    <script src="../js/keyboard.js"></script>
+</body>
+</html>

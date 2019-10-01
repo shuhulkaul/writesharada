@@ -1,0 +1,24 @@
+{
+  "name": "writesharada",
+  "version": "1.0.0",
+  "description": "Write Sharada Language",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shuhul Kaul",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "bootstrap": "^4.2.1",
+    "connect-flash": "*",
+    "cookie-parser": "*",
+    "express": "^4.16.4",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "^5.3.1",
+    "flash": "^1.1.0",
+    "nodemailer": "^6.3.0"
+  }
+}
