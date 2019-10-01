@@ -36,15 +36,20 @@ router.post('/report', async function(req, res)
     }
     else 
     {
-
-        let transporter = nodemailer.createTransport({
-           service: 'gmail',
-            auth: {
-              user: "instassistofficial@gmail.com", // generated ethereal user
-              pass: "Inst@ssIst22" // generated ethereal password
-            }
-          });
-
+      var transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+          user: "instassistofficial@gmail.com", // generated ethereal user
+          pass: "Inst@ssIst22" // generated ethereal password
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false
+        }
+    });
+      
           let info = await transporter.sendMail({
             from: email, // sender address
             to: "shuhulkaul22@gmail.com", // list of receivers
