@@ -20,6 +20,10 @@ router.get('/contact', function(req, res)
 	res.render('contact', {title: 'Contact'});
 });
 
+router.get('/pending', function(req, res)
+{
+	res.render('pending', {title: 'Pending Work'});
+});
 router.post('/downloadImage', async function(req, res)
 {
   var text = req.body.text;
@@ -101,22 +105,18 @@ router.post('/report', async function(req, res)
     if (errors) {
             console.log(errors);
         res.render('report', {
-            errors: errors
+            errors: errors,
+            title: 'Feedback/Report'
         });
     }
     else 
     {
-      var transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
+      const transporter = nodemailer.createTransport({
+        host: 'smtp.ethereal.email',
+        port: 587,
         auth: {
-          user: "instassistofficial@gmail.com", // generated ethereal user
-          pass: "Inst@ssIst22" // generated ethereal password
-        },
-        tls: {
-            // do not fail on invalid certs
-            rejectUnauthorized: false
+            user: 'sally.pacocha@ethereal.email',
+            pass: '8bfkJcaPu4PS4xSNBD'
         }
     });
       
@@ -132,7 +132,8 @@ router.post('/report', async function(req, res)
 		
                 console.log("ERROR :"+ error);	
                 res.render('report',{
-                    error:error 
+                    error:error,
+                    title: 'Feedback/Report'
                 });
 					
 			} else {
@@ -142,7 +143,8 @@ router.post('/report', async function(req, res)
                 console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
                 var message = "success";
                 res.render('report',{
-                     message: message
+                     message: message,
+                     title: 'Feedback/Report'
                 });
 			}
 		});
