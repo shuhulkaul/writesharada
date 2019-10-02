@@ -18,18 +18,52 @@
             document.getElementById('mainText').value=document.getElementById('mainText').value+letter;
         }
     }
+   
 </script>
-
-  <textarea id="mainText"></textarea>
-
+<div class="container is-centered">
+   {{{msg}}}
+<form method="post">
+  <textarea name="text" id="mainText"></textarea>
+  <br>
+</div>
 <div class="container is-centered">
 <div class="box has-background-white">
+  Image Settings:<br>
+  Size:
+<select name="size">
+  <option value="20pt">20 pt</option>
+  <option value="50pt">50 pt</option>
+  <option value="100pt">100 pt</option>
+  <option value="150pt">150pt</option>
+  <option value="200pt">200pt</option>
+</select> 
+BG Color:
+<select name="bgColor">
+  <option value="orange" selected>Orange</option>
+  <option value="black">Black</option>
+  <option value="white">White</option>
+  {{!-- <option value="red">Red</option> --}}
+  <option value="green">Green</option>
+  {{!-- <option value="blue">Blue</option> --}}
+</select>
+Text Color:
+<select name="textColor">
+  <option value="orange">Orange</option>
+  <option value="black">Black</option>
+  <option value="white" selected>White</option>
+  <option value="red">Red</option>
+  <option value="green">Green</option>
+  <option value="blue">Blue</option>
+</select>
+  <input type="submit" value="Download as Image" formaction="/downloadImage">
+  <br>
+  <input type="submit" value="Download as PDF" formaction="/downloadPDF">
+  </form>
 <table>
 <tr>
 <td><input type="button"   onclick="alpha('Clear')" value="Clear"></td>
 <td><input type="button"   onclick="alpha('Backspace')" value="Backspace"></td>
 <td><input type="button"   onclick="alpha('Space')" value="Space"></td>
-<td><input type="button"   style="color: red" value="Download[BETA]"></td>
 </tr>
 </table>
 <hr>
