@@ -6,6 +6,7 @@ var fs = require('fs');
 var path = require('path')
 var Canvas = require('canvas')
 const PDFDocument = require('pdfkit');
+var sgTransport = require('nodemailer-sendgrid-transport');
 // Get Homepage
 router.get('/', function(req, res)
 {
@@ -56,7 +57,7 @@ router.post('/downloadImage', async function(req, res)
   }
   else
   {
-    res.render('home', {msg: 'Please type some text!'});
+    res.render('home', {msg: 'Please type some text!', title: 'Write Sharada'});
   }
   
 
@@ -86,7 +87,7 @@ router.post('/downloadPDF', async function(req, res)
 
   else
   {
-    res.render('home', {msg: 'Please type some text!'});
+    res.render('home', {msg: 'Please type some text!', title: 'Write Sharada'});
   }
 });
 
@@ -111,43 +112,82 @@ router.post('/report', async function(req, res)
     }
     else 
     {
-      const transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
+
+      var options = {
         auth: {
-            user: 'sally.pacocha@ethereal.email',
-            pass: '8bfkJcaPu4PS4xSNBD'
+          api_user: 'writesharada',
+          api_key: 'wrItEsh@r@d@22'
         }
-    });
+      }
       
-          let info = await transporter.sendMail({
-            from: email, // sender address
-            to: "shuhulkaul22@gmail.com", // list of receivers
-            subject: "Write Sharada Report: "+subject+" from: "+name +" ("+email+")", // Subject line
-            text:"Report Message: " + message, // plain text body
-            
-          }, function(error, info){
-			
-			if (error) {
-		
-                console.log("ERROR :"+ error);	
-                res.render('report',{
-                    error:error,
-                    title: 'Feedback/Report'
-                });
-					
-			} else {
-				
-				console.log("INFO RESPONSE:" + info.response);
-                console.log("Message sent: %s", info.messageId);        
-                console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-                var message = "success";
-                res.render('report',{
-                     message: message,
+      var client = nodemailer.createTransport(sgTransport(options));
+      
+      var email = {
+        from: email,
+        to: 'shuhulkaul22@gmail.com',
+        subject: "Write Sharada Report: "+subject+" from: "+name +" ("+email+")", // Subject line
+        text:"Report Message: " + message, // plain text body
+      };
+      
+      client.sendMail(email, function(err, info){
+          if (err ){
+            console.log("ERROR :"+ err);	
+                 res.render('report',{
+                     error: 'Error in sending report. Please try again!',
                      title: 'Feedback/Report'
                 });
-			}
-		});
+          }
+          else {
+            console.log("INFO RESPONSE:" + info.response);
+                //  console.log("Message sent: %s", info.messageId);        
+                //  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+                 var message = "success";
+                 res.render('report',{
+                      message: message,
+                      title: 'Feedback/Report'
+                 });
+          }
+      });
+
+
+    //   var options = {
+    //     auth: {
+    //       api_user: 'writesharada',
+    //       api_key: 'wrItEsh@r@d@22'
+    //     }
+    //   }
+      
+    //   var transporter = nodemailer.createTransport(sgTransport(options));
+      
+      
+    //       let info = await transporter.sendMail({
+    //         from: email, // sender address
+    //         to: "shuhulkaul22@gmail.com", // list of receivers
+    //         subject: "Write Sharada Report: "+subject+" from: "+name +" ("+email+")", // Subject line
+    //         text:"Report Message: " + message, // plain text body
+            
+    //       }, function(error, info){
+			
+		// 	if (error) {
+		
+    //             console.log("ERROR :"+ error);	
+    //             res.render('report',{
+    //                 error:error,
+    //                 title: 'Feedback/Report'
+    //             });
+					
+		// 	} else {
+				
+		// 		console.log("INFO RESPONSE:" + info.response);
+    //             console.log("Message sent: %s", info.messageId);        
+    //             console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    //             var message = "success";
+    //             res.render('report',{
+    //                  message: message,
+    //                  title: 'Feedback/Report'
+    //             });
+		// 	}
+		// });
     }
 });
 
