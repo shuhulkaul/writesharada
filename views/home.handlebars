@@ -20,53 +20,71 @@
     }
    
 </script>
-<div class="container is-centered">
-   {{{msg}}}
+   <label style="color:red">{{{msg}}}</label>
 <form method="post">
-  <textarea name="text" id="mainText"></textarea>
-  <br>
+  {{!-- <textarea ></textarea> --}}
+  <div class="field">
+  <label class="label">Text</label>
+  <div class="control">
+    <textarea class="textarea" name="text" id="mainText"></textarea>
+  </div>
 </div>
-<div class="container is-centered">
-<div class="box has-background-white">
-  Image Settings:<br>
-  Size:
-<select name="size">
-  <option value="50pt">50 pt</option>
-  <option value="100pt">100 pt</option>
-  <option value="150pt">150 pt</option>
-  <option value="200pt">200 pt</option>
-</select> 
-BG Color:
-<select name="bgColor">
-  <option value="orange" selected>Orange</option>
-  <option value="black">Black</option>
-  <option value="white">White</option>
-  {{!-- <option value="red">Red</option> --}}
-  <option value="green">Green</option>
-  {{!-- <option value="blue">Blue</option> --}}
-</select>
-Text Color:
-<select name="textColor">
-  <option value="orange">Orange</option>
-  <option value="black">Black</option>
-  <option value="white" selected>White</option>
-  <option value="red">Red</option>
-  <option value="green">Green</option>
-  <option value="blue">Blue</option>
-</select>
-  <input type="submit" value="Download as Image" formaction="/downloadImage">
-  <br>
-  <input type="submit" style="color:red" value="Download as PDF [BETA]" formaction="/downloadPDF">
-  </form>
-<table>
+
+  <table>
 <tr>
-<td><input type="button"   onclick="alpha('Clear')" value="Clear"></td>
-<td><input type="button"   onclick="alpha('Backspace')" value="Backspace"></td>
-<td><input type="button"   onclick="alpha('Space')" value="Space"></td>
+<td><input type="button" class="button is-info is-inverted is-large is-fullwidth"  onclick="alpha('Clear')" value="Clear"></td>
+<td><input type="button" class="button is-info is-inverted is-large is-fullwidth"  onclick="alpha('Backspace')" value="Backspace"></td>
+<td><input type="button" class="button is-info is-inverted is-large is-fullwidth"  onclick="alpha('Space')" value="Space"></td>
 </tr>
 </table>
 <hr>
-<table>
+<div class="columns">
+  <div class="column">
+      <div class="control">
+    <div class="select is-primary">
+      <select name="size">
+        <option value="" selected>Text Size</option>
+        <option value="50pt">50 pt</option>
+        <option value="100pt">100 pt</option>
+        <option value="150pt">150 pt</option>
+        <option value="200pt">200 pt</option>
+      </select>
+    </div>
+  
+    <div class="select is-info">
+     
+      <select name="bgColor">
+        <option value="" selected>Background Color</option>
+        <option value="orange" >Orange</option>
+        <option value="black">Black</option>
+        <option value="white">White</option>
+        {{!-- <option value="red">Red</option> --}}
+        <option value="green">Green</option>
+        {{!-- <option value="blue">Blue</option> --}}
+      </select>
+    </div>
+
+    <div class="select is-success">
+      
+      <select name="textColor">
+        <option value="" selected>Text Color</option>
+        <option value="orange">Orange</option>
+        <option value="black">Black</option>
+        <option value="white" >White</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+      </select>
+    </div>
+  </div>
+  <br>
+  <input type="submit" class="button is-info " value="Download as Image" formaction="/downloadImage">
+  <input type="submit" class="button is-info "  value="Download as PDF" formaction="/downloadPDF">
+  </form>
+ </div>
+</div>
+<div class="table-container">
+<table class="table">
 <tr>
 <td><input type="button"   onclick="alpha('s')" value="क"></td>
 <td><input type="button"   onclick="alpha('v')" value="ख"></td>
@@ -109,8 +127,7 @@ Text Color:
 <td><input type="button"   onclick="alpha('j')" value="व"></td>
 <td><input type="button"   onclick="alpha('x')" value="ह"></td>
 </tr>
-</table>
-<table>
+
 <tr>
 <td><input type="button"   onclick="alpha('z')" value="श"></td>
 <td><input type="button"   onclick="alpha('i')" value="ष"></td>
@@ -119,8 +136,7 @@ Text Color:
 <td><input type="button"   onclick="alpha('q')" value="त्र"></td>
 <td><input type="button"   onclick="alpha('1')" value="ज्ञ"></td>
 </tr>
-</table>
-<table>
+
 <tr>
 <td><input type="button"   onclick="alpha('c')" value="अ"></td>
 <td><input type="button"   onclick="alpha('p')" value="आ"></td>
@@ -164,44 +180,41 @@ Text Color:
 <td><input type="button"    onclick="alpha('_')" value=")"></td>
 <td><input type="button"    onclick="alpha(',')" value=","></td>
 <td><input type="button"    onclick="alpha(')')" value="."></td>
-<td><input type="button"    onclick="alpha('>')" value="!"></td>
+{{!-- <td><input type="button"    onclick="alpha('>')" value="!"></td> --}}
 <td><input type="button"    onclick="alpha('?')" value="?"></td>
-<td><input type="button"    onclick="alpha('A')" value="quote"></td>
-<td><input type="button"    onclick="alpha('B')" value="unquote"></td>
+{{!-- <td><input type="button"    onclick="alpha('A')" value="quote"></td>
+<td><input type="button"    onclick="alpha('B')" value="unquote"></td> --}}
 </tr>
-<tr>
+{{!-- <tr>
 <td><input type="button"    onclick="alpha('C')" value="\'"></td>
 <td><input type="button"    onclick="alpha('D')" value="\'"></td>
 <td><input type="button"    onclick="alpha('E')" value="+"></td>
 <td><input type="button"    onclick="alpha('F')" value="-"></td>
 <td><input type="button"    onclick="alpha('G')" value="division sign"></td>
-</tr>
-<tr>
+</tr> --}}
+{{!-- <tr>
 <td><input type="button"    onclick="alpha('H')" value="*"></td>
 <td><input type="button"    onclick="alpha('I')" value="'\'"></td>
 <td><input type="button"    onclick="alpha('J')" value="/"></td>
 <td><input type="button"    onclick="alpha('U')" value="<"></td>
 <td><input type="button"    onclick="alpha('V')" value=">"></td>
-</tr>
-</tbody></table>
-<table>
- 
-<tr>Subscripts</tr>
-<tr class="arial"> 
+</tr> --}}
+</tbody>
+{{!-- <tr class="arial"> 
 <td><input type="button"   onclick="alpha('S')" value="क"></td>
 <td><input type="button"   onclick="alpha('N')" value="ल"></td>
 <td><input type="button"   onclick="alpha('R')" value="छ"></td>
 <td><input type="button"   onclick="alpha('T')" value="त"></td>
-</tr></tbody>
-</table>
-<table >
- <tr class="arial"> 
+</tr></tbody> --}}
+
+<tr class="arial"> 
 <td>0</td>
 <td>1</td>
 <td>2</td>
 <td>3</td>
 <td>4</td>
 <td>5</td>
+
 <td>6</td>
 <td>7</td>
 <td>8</td>
@@ -214,6 +227,7 @@ Text Color:
 <td><input type="button"   onclick="alpha('#')" value="३"></td>
 <td><input type="button"   onclick="alpha('$')" value="४"></td>
 <td><input type="button"   onclick="alpha('%')" value="५"></td>
+<br>
 <td><input type="button"   onclick="alpha('^')" value="६"></td>
 <td><input type="button"   onclick="alpha('&')" value="७"></td>
 <td><input type="button"   onclick="alpha('*')" value="८"></td>
@@ -230,4 +244,3 @@ Text Color:
 </tr>
 </tbody></table>
 </div>
- </div>

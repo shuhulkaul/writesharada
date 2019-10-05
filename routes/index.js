@@ -31,6 +31,18 @@ router.post('/downloadImage', async function(req, res)
   var textColor = req.body.textColor;
   var bgColor = req.body.bgColor;
   var size = req.body.size;
+  if(textColor=="")
+  {
+    textColor ="white"
+  }
+  if(bgColor=="")
+  {
+    bgColor ="orange"
+  }
+  if(size=="")
+  {
+    size ="150pt"
+  }
   if(text)
   {  
     Canvas.registerFont('./Sharada.ttf', {family: 'Sharada'})
