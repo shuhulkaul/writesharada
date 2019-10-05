@@ -135,7 +135,7 @@ router.post('/report', async function(req, res)
       var client = nodemailer.createTransport(sgTransport(options));
       
       var email = {
-        from: email,
+        from: 'help-writesharada',
         to: 'shuhulkaul22@gmail.com',
         subject: "Write Sharada Report: "+subject+" from: "+name +" ("+email+")", // Subject line
         text:"Report Message: " + message, // plain text body
