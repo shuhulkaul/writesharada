@@ -127,7 +127,7 @@ router.post('/report', async function(req, res)
 
       var options = {
         auth: {
-          api_user: 'writesharada',
+          api_user: 'write_sharada',
           api_key: 'wrItEsh@r@d@22'
         }
       }
