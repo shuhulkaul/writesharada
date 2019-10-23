@@ -127,8 +127,8 @@ router.post('/report', async function(req, res)
 
       var options = {
         auth: {
-          api_user: 'write_sharada',
-          api_key: 'wrItEsh@r@d@22'
+          api_user: '',
+          api_key: ''
         }
       }
       
@@ -162,44 +162,6 @@ router.post('/report', async function(req, res)
       });
 
 
-    //   var options = {
-    //     auth: {
-    //       api_user: 'writesharada',
-    //       api_key: 'wrItEsh@r@d@22'
-    //     }
-    //   }
-      
-    //   var transporter = nodemailer.createTransport(sgTransport(options));
-      
-      
-    //       let info = await transporter.sendMail({
-    //         from: email, // sender address
-    //         to: "shuhulkaul22@gmail.com", // list of receivers
-    //         subject: "Write Sharada Report: "+subject+" from: "+name +" ("+email+")", // Subject line
-    //         text:"Report Message: " + message, // plain text body
-            
-    //       }, function(error, info){
-			
-		// 	if (error) {
-		
-    //             console.log("ERROR :"+ error);	
-    //             res.render('report',{
-    //                 error:error,
-    //                 title: 'Feedback/Report'
-    //             });
-					
-		// 	} else {
-				
-		// 		console.log("INFO RESPONSE:" + info.response);
-    //             console.log("Message sent: %s", info.messageId);        
-    //             console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    //             var message = "success";
-    //             res.render('report',{
-    //                  message: message,
-    //                  title: 'Feedback/Report'
-    //             });
-		// 	}
-		// });
     }
 });
 
